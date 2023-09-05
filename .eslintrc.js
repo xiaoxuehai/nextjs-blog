@@ -45,14 +45,7 @@ module.exports = {
     // 自动删除未使用的导入
     // https://github.com/sweepline/eslint-plugin-unused-imports
     'unused-imports/no-unused-imports': 1,
-    'unused-imports/no-unused-vars': [
-      'error',
-      {
-        vars: 'all',
-        args: 'none',
-        ignoreRestSiblings: true,
-      },
-    ],
+    'unused-imports/no-unused-vars': 'error',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'import/no-mutable-exports': 'off',

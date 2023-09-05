@@ -1,10 +1,11 @@
 module.exports = {
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-prettier',
     'stylelint-config-css-modules',
+    'stylelint-config-recess-order',
+    'stylelint-config-prettier',
+    'stylelint-prettier/recommended',
   ],
-  plugins: ['stylelint-prettier'],
   rules: {
     'prettier/prettier': true,
     'import-notation': 'string', // 使用string方式引入其它css文件，而不是url()

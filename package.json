@@ -47,20 +47,14 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
+      "eslint --fix --max-warnings=0",
       "prettier --write"
     ],
-    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --write--parser json"
-    ],
-    "package.json": [
+    "*.{json,md,mdx}": [
       "prettier --write"
     ],
     "*.{css,html}": [
       "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.md": [
       "prettier --write"
     ]
   }
