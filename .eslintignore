@@ -13,3 +13,6 @@ docs
 .local
 bin
 Dockerfile
+.commitlintrc
+.stylelintrc
+.prettierrc
