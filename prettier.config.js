@@ -1,7 +1,6 @@
 // @see: https://www.prettier.cn
 
 module.exports = {
-  plugins: ['prettier-plugin-tailwindcss'],
   // 超过最大值换行
   printWidth: 80,
   // 缩进字节数
@@ -35,4 +34,5 @@ module.exports = {
   // 这两个选项可用于格式化以给定字符偏移量（分别包括和不包括）开始和结束的代码
   rangeStart: 0,
   rangeEnd: Infinity,
+  plugins: [require.resolve('prettier-plugin-tailwindcss')],
 };

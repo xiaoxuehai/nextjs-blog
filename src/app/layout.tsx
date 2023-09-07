@@ -14,7 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className='h-10 w-full bg-gray-300'>这是根布局的header</div>
+        {children}
+      </body>
     </html>
   );
 }

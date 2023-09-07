@@ -13,6 +13,3 @@ docs
 .local
 bin
 Dockerfile
-!.stylelintrc.js
-!.prettierrc.js
-!.commitlintrc.js
