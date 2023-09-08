@@ -59,6 +59,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
     '@typescript-eslint/ban-ts-ignore': 'off', // 禁止使用 @ts-ignore
     '@typescript-eslint/no-non-null-assertion': 'off', // 不允许使用后缀运算符的非空断言(!)
+    '@typescript-eslint/no-var-requires': 'off',
     'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
     'react/jsx-props-no-multi-spaces': 'error',
   },
