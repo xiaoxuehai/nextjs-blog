@@ -5,6 +5,7 @@ module.exports = {
     'stylelint-config-recess-order',
     'stylelint-config-prettier',
     'stylelint-prettier/recommended',
+    'stylelint-config-tailwindcss',
   ],
   rules: {
     'prettier/prettier': true,
@@ -43,7 +44,6 @@ module.exports = {
         ],
       },
     ],
-
     'property-no-unknown': [
       true,
       {
