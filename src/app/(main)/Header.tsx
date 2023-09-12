@@ -6,14 +6,19 @@ import { useEffect, useRef, useState } from 'react';
 import { NavigationBar } from '@/app/(main)/NavigationBar';
 import { ThemeSwitch } from '@/app/(main)/ThemeSwitch';
 import Container from '@/components/Container';
-
+enum Animate {
+  Show = 'show',
+  Hidden = 'hidden',
+}
 export default function Header() {
-  const prevScrollY = useRef(0);
-  const [showHeader, setShowHeader] = useState(true);
+  const preScrollY = useRef(0);
+  const [animate, setAnimate] = useState<Animate>(Animate.Show);
   useEffect(() => {
     const handleScroll = () => {
-      setShowHeader(window.scrollY < prevScrollY.current);
-      prevScrollY.current = window.scrollY;
+      setAnimate(
+        window.scrollY < preScrollY.current ? Animate.Show : Animate.Hidden,
+      );
+      preScrollY.current = window.scrollY;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -22,14 +27,14 @@ export default function Header() {
     };
   }, []);
   const variants = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: '-100%' },
+    hidden: { opacity: 0, y: '-100%', scale: 0.9 },
+    show: { opacity: 1, y: 0, scale: 1 },
   };
-
   return (
     <motion.div
       className='sticky top-0 z-50'
-      animate={showHeader ? 'open' : 'closed'}
+      initial={variants.hidden}
+      animate={animate}
       variants={variants}
     >
       <Container>
@@ -38,15 +43,9 @@ export default function Header() {
           <div className='flex flex-1 justify-center'>
             <NavigationBar />
           </div>
-          <motion.div
-            className='flex justify-end gap-3 md:flex-1'
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-          >
-            <div className='pointer-events-auto'>
-              <ThemeSwitch />
-            </div>
-          </motion.div>
+          <div className='pointer-events-auto flex justify-end gap-3 md:flex-1'>
+            <ThemeSwitch />
+          </div>
         </div>
       </Container>
     </motion.div>

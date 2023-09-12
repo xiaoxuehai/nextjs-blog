@@ -22,15 +22,15 @@ function NavigationItem({
         className={clsxm(
           'relative flex h-full items-center whitespace-nowrap px-3 py-2 transition',
           isActive
-            ? 'text-amber-600 dark:text-amber-400'
-            : 'hover:text-amber-600 dark:hover:text-amber-400',
+            ? ' text-sky-600 dark:text-sky-400'
+            : 'hover:text-sky-600 dark:hover:text-sky-400',
         )}
       >
         {children}
         {isActive && (
           <motion.span
-            className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-amber-700/0 via-amber-700/70 to-amber-700/0 dark:from-amber-400/0 dark:via-amber-400/40 dark:to-amber-400/0'
-            layoutId='active-nav-item'
+            className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-amber-700/0 via-sky-700/70 to-sky-700/0 dark:from-amber-400/0 dark:via-sky-400/40 dark:to-amber-400/0'
+            layoutId='active-navigation-item'
           />
         )}
       </Link>
@@ -60,7 +60,7 @@ function Desktop({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         'rounded-full bg-gradient-to-b from-zinc-50/70 to-white/90',
         'shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md',
         'dark:from-zinc-900/70 dark:to-zinc-800/90 dark:ring-zinc-100/10',
-        '[--spotlight-color:rgb(234_88_12_/_0.15)] dark:[--spotlight-color:rgb(217_249_157_/_0.1)]',
+        '[--spotlight-color:rgb(2,132,199,0.1)] dark:[--spotlight-color:rgb(2,132,199,0.3)]',
         className,
       )}
       {...props}
