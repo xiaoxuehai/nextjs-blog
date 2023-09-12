@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { FaRegSun, FaRegMoon } from 'react-icons/fa';
 
 const themes = [
@@ -17,24 +17,15 @@ const themes = [
   },
 ];
 export function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
-
   const { setTheme, theme, resolvedTheme } = useTheme();
   const ThemeIcon = useMemo(
     () => themes.find(item => item.value === theme)?.icon,
     [theme],
   );
 
-  useEffect(() => setMounted(true), []);
-
   function toggleTheme() {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   }
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <button
       type='button'

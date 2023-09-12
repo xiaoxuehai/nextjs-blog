@@ -19,8 +19,8 @@ module.exports = {
     'next',
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
     'plugin:prettier/recommended',
+    'prettier',
   ],
   rules: {
     // 模块导入顺序规则
@@ -49,7 +49,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'import/no-mutable-exports': 'off',
-    'prettier/prettier': ['error', { trailingComma: 'es5', singleQuote: true }],
+    'prettier/prettier': 'error',
     'no-param-reassign': 'off', // 禁止可以修改参数
     'no-var': 'error', // 要求使用 let 或 const 而不是 var
     'no-multiple-empty-lines': ['error', { max: 1 }], // 不允许多个空行
