@@ -40,7 +40,7 @@ export default function Header() {
       <Container>
         <div className='z-50 flex h-16 pt-6'>
           <div className='flex-1'>Blog</div>
-          <div className='flex flex-1 justify-center'>
+          <div className='flex flex-1 justify-end px-4'>
             <NavigationBar />
           </div>
           <div className='pointer-events-auto flex justify-end gap-3 md:flex-1'>

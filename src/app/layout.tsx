@@ -6,7 +6,7 @@ import type { PropsWithChildren } from 'react';
 import '@/styles/index.css';
 
 const inter = Inter({ subsets: ['latin'] });
-const ThemeProvider = dynamic(() => import('@/components/ThemeProvider'), {
+const ThemeProvider = dynamic(() => import('@/app/(main)/ThemeProvider'), {
   ssr: false,
 });
 export const metadata: Metadata = {

@@ -2,18 +2,18 @@
 
 import { useTheme } from 'next-themes';
 import React, { useMemo } from 'react';
-import { FaRegSun, FaRegMoon } from 'react-icons/fa';
+import { BiSun, BiMoon } from 'react-icons/bi';
 
 const themes = [
   {
     label: '浅色模式',
     value: 'light',
-    icon: FaRegSun,
+    icon: BiSun,
   },
   {
     label: '深色模式',
     value: 'dark',
-    icon: FaRegMoon,
+    icon: BiMoon,
   },
 ];
 export function ThemeSwitch() {

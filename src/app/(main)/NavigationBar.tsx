@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useCallback } from 'react';
 import type { HTMLAttributes, MouseEvent, PropsWithChildren } from 'react';
 
+import { FaAngleDown } from 'react-icons/fa';
+
 import { NAVIGATION_ITEMS } from '@/config/app';
 import clsxm from '@/lib/clsxm';
 
@@ -37,7 +39,7 @@ function NavigationItem({
     </li>
   );
 }
-function Desktop({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+function Desktop({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const radius = useMotionValue(0);
@@ -63,7 +65,7 @@ function Desktop({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         '[--spotlight-color:rgb(2,132,199,0.1)] dark:[--spotlight-color:rgb(2,132,199,0.3)]',
         className,
       )}
-      {...props}
+      {...rest}
     >
       <motion.div
         className='pointer-events-none absolute -inset-px rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100'
@@ -80,6 +82,25 @@ function Desktop({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
     </nav>
   );
 }
+function Mobile({ className, ...rest }: HTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      {...rest}
+      className={clsxm(
+        'group flex w-20 items-center justify-between rounded-full bg-gradient-to-b from-zinc-50/50 to-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:from-zinc-900/50 dark:to-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20',
+        className,
+      )}
+    >
+      前往
+      <FaAngleDown />
+    </button>
+  );
+}
 export function NavigationBar() {
-  return <Desktop />;
+  return (
+    <>
+      <Desktop className='hidden md:block' />
+      <Mobile className='md:hidden' />
+    </>
+  );
 }
