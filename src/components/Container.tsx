@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
-type ContainerProps = ComponentPropsWithoutRef<'div'>;
+export type ContainerProps = ComponentPropsWithoutRef<'div'>;
 const Container = forwardRef<HTMLDivElement, ContainerProps>(function Container(
   { className, children, ...props }: ContainerProps,
   ref,
