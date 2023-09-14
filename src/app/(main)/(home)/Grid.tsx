@@ -1,30 +1,68 @@
 'use client';
+
 import React from 'react';
-import ReactGridLayout from 'react-grid-layout';
+import RGL, { WidthProvider } from 'react-grid-layout';
+
+const ReactGridLayout = WidthProvider(RGL);
+// const ReactGridLayout = RGL;
+import './styles/grid.css';
 
 export default function Grid() {
+  const props = {
+    items: 6,
+    // rowHeight: 30,
+    cols: 24,
+  };
+
+  const layout = [
+    { x: 0, y: 0, w: 8, h: 1, i: '0' },
+
+    { x: 12, y: 0, w: 16, h: 1, i: '1' },
+
+    { x: 0, y: 0, w: 24, h: 1, i: '2' },
+
+    { x: 0, y: 0, w: 10, h: 1, i: '3' },
+
+    { x: 14, y: 0, w: 14, h: 1, i: '4' },
+  ];
+  console.log(layout, 'layout');
+
+  function onLayoutChange(data: any) {
+    console.log(data, 'data');
+  }
+
   return (
-    <ReactGridLayout className='layout' cols={12} rowHeight={30} width={1200}>
-      <div
-        className='bg-blue-500'
-        key='a'
-        data-grid={{ x: 0, y: 0, w: 1, h: 2, static: true }}
-      >
-        a
+    <ReactGridLayout layout={layout} onLayoutChange={onLayoutChange} {...props}>
+      {/* <div>
+        <span className='text'>{1}</span>
       </div>
-      <div
-        className='bg-blue-500'
-        key='b'
-        data-grid={{ x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4 }}
-      >
-        b
+      <div>
+        <span className='text'>{2}</span>
       </div>
-      <div
-        className='bg-blue-500'
-        key='c'
-        data-grid={{ x: 4, y: 0, w: 1, h: 2 }}
-      >
-        c
+      <div>
+        <span className='text'>{3}</span>
+      </div>
+      <div>
+        <span className='text'>{4}</span>
+      </div>
+      <div>
+        <span className='text'>{5}</span>
+      </div> */}
+      {/* {generateDOM()} */}
+      <div key={0}>
+        <span className='text'>0</span>
+      </div>
+      <div key={1}>
+        <span className='text'>1</span>
+      </div>
+      <div key={2}>
+        <span className='text'>2</span>
+      </div>
+      <div key={3}>
+        <span className='text'>3</span>
+      </div>
+      <div key={4}>
+        <span className='text'>4</span>
       </div>
     </ReactGridLayout>
   );
