@@ -32,7 +32,12 @@ export default function Grid() {
   }
 
   return (
-    <ReactGridLayout layout={layout} onLayoutChange={onLayoutChange} {...props}>
+    <ReactGridLayout
+      layout={layout}
+      margin={[12, 12]}
+      onLayoutChange={onLayoutChange}
+      {...props}
+    >
       {/* <div>
         <span className='text'>{1}</span>
       </div>
