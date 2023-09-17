@@ -1,0 +1,32 @@
+.react-grid-item {
+  background-color: #fff;
+  border-color: #e3e8f7;
+  border-width: 1px;
+  box-shadow: 0 8px 16px -4px #2c2d300c;
+  transition: all 200ms ease;
+  transition-property: left, top, transform;
+
+  /* transition-property: transform; */
+  &:not(.react-grid-placeholder) {
+    background: #ccc;
+  }
+
+  /* &.cssTransforms {
+    transition-property: transform;
+  } */
+
+  &.react-draggable-dragging {
+    z-index: 3;
+    transition: none;
+    will-change: transform;
+  }
+
+  &.react-grid-placeholder {
+    z-index: 2;
+    user-select: none;
+    background: red;
+    border-radius: 0;
+    opacity: 0.2;
+    transition-duration: 100ms;
+  }
+}

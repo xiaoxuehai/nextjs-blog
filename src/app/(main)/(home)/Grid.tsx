@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import RGL, { WidthProvider } from 'react-grid-layout';
+import RGL, { Layout, WidthProvider } from 'react-grid-layout';
 
+import './styles/grid-module.css';
 const ReactGridLayout = WidthProvider(RGL);
-// const ReactGridLayout = RGL;
-import './styles/grid.css';
 
 export default function Grid() {
   const props = {
@@ -14,8 +13,8 @@ export default function Grid() {
     cols: 24,
   };
 
-  const layout = [
-    { x: 0, y: 0, w: 8, h: 1, i: '0' },
+  const layout: Layout[] = [
+    { x: 0, y: 0, w: 8, h: 1, i: '0', isResizable: false },
 
     { x: 12, y: 0, w: 16, h: 1, i: '1' },
 
@@ -30,12 +29,13 @@ export default function Grid() {
   function onLayoutChange(data: any) {
     console.log(data, 'data');
   }
-
+  //   react-grid-item box-border w-full flex flex-col justify-center card bg-say-hello react-draggable cssTransforms react-resizable-hide react-resizable
   return (
     <ReactGridLayout
       layout={layout}
       margin={[12, 12]}
       onLayoutChange={onLayoutChange}
+      className='relative'
       {...props}
     >
       {/* <div>
@@ -54,19 +54,25 @@ export default function Grid() {
         <span className='text'>{5}</span>
       </div> */}
       {/* {generateDOM()} */}
-      <div key={0}>
+      <div
+        key={0}
+        className='card'
+        style={{
+          backgroundImage: 'linear-gradient(120deg,#5b27ff,#00d4ff)',
+        }}
+      >
         <span className='text'>0</span>
       </div>
-      <div key={1}>
+      <div key={1} className='card'>
         <span className='text'>1</span>
       </div>
-      <div key={2}>
+      <div key={2} className='card'>
         <span className='text'>2</span>
       </div>
-      <div key={3}>
+      <div key={3} className='card'>
         <span className='text'>3</span>
       </div>
-      <div key={4}>
+      <div key={4} className='card'>
         <span className='text'>4</span>
       </div>
     </ReactGridLayout>
