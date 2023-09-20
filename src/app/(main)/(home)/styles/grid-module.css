@@ -1,15 +1,21 @@
 .react-grid-item {
+  height: 200px;
   background-color: #fff;
+  background-size: 200%;
   border-color: #e3e8f7;
   border-width: 1px;
   box-shadow: 0 8px 16px -4px #2c2d300c;
   transition: all 200ms ease;
   transition-property: left, top, transform;
+  animation: gradient 5s ease infinite;
+
+  @apply rounded-3xl bg-white;
 
   /* transition-property: transform; */
-  &:not(.react-grid-placeholder) {
+
+  /* &:not(.react-grid-placeholder) {
     background: #ccc;
-  }
+  } */
 
   /* &.cssTransforms {
     transition-property: transform;
@@ -22,11 +28,21 @@
   }
 
   &.react-grid-placeholder {
+    @apply select-none rounded-none bg-blue-700 opacity-10 duration-100;
     z-index: 2;
-    user-select: none;
-    background: red;
-    border-radius: 0;
-    opacity: 0.2;
-    transition-duration: 100ms;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
   }
 }

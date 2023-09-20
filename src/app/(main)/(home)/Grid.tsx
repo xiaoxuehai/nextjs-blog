@@ -8,21 +8,26 @@ const ReactGridLayout = WidthProvider(RGL);
 
 export default function Grid() {
   const props = {
-    items: 6,
+    // items: 6,
     // rowHeight: 30,
     cols: 24,
   };
 
   const layout: Layout[] = [
-    { x: 0, y: 0, w: 8, h: 1, i: '0', isResizable: false },
+    { x: 0, y: 0, w: 14, h: 1, i: '0', isResizable: false },
 
-    { x: 12, y: 0, w: 16, h: 1, i: '1' },
+    { x: 14, y: 0, w: 10, h: 1, i: '1' },
 
     { x: 0, y: 0, w: 24, h: 1, i: '2' },
 
     { x: 0, y: 0, w: 10, h: 1, i: '3' },
 
     { x: 14, y: 0, w: 14, h: 1, i: '4' },
+
+    { x: 0, y: 0, w: 12, h: 1.5, i: '5' },
+    { x: 12, y: 1, w: 12, h: 1, i: '6' },
+    { x: 0, y: 0, w: 12, h: 1, i: '7' },
+    { x: 12, y: 0, w: 12, h: 1, i: '8' },
   ];
   console.log(layout, 'layout');
 
@@ -36,6 +41,7 @@ export default function Grid() {
       margin={[12, 12]}
       onLayoutChange={onLayoutChange}
       className='relative'
+      rowHeight={200}
       {...props}
     >
       {/* <div>
@@ -74,6 +80,18 @@ export default function Grid() {
       </div>
       <div key={4} className='card'>
         <span className='text'>4</span>
+      </div>
+      <div key={5} className='card'>
+        <span className='text'>5</span>
+      </div>
+      <div key={6} className='card'>
+        <span className='text'>6</span>
+      </div>
+      <div key={7} className='card'>
+        <span className='text'>7</span>
+      </div>
+      <div key={8} className='card'>
+        <span className='text'>8</span>
       </div>
     </ReactGridLayout>
   );
