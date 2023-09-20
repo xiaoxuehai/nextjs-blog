@@ -8,7 +8,7 @@ const ReactGridLayout = WidthProvider(RGL);
 
 export default function Grid() {
   const props = {
-    // items: 6,
+    // items: 2,
     // rowHeight: 30,
     cols: 24,
   };
@@ -24,10 +24,10 @@ export default function Grid() {
 
     { x: 14, y: 0, w: 14, h: 1, i: '4' },
 
-    { x: 0, y: 0, w: 12, h: 1.5, i: '5' },
-    { x: 12, y: 1, w: 12, h: 1, i: '6' },
-    { x: 0, y: 0, w: 12, h: 1, i: '7' },
-    { x: 12, y: 0, w: 12, h: 1, i: '8' },
+    { x: 0, y: 0, w: 12, h: 14, i: '5' },
+    { x: 12, y: 0, w: 12, h: 8, i: '6' },
+    { x: 0, y: 0, w: 12, h: 14, i: '7' },
+    { x: 12, y: 0, w: 12, h: 8, i: '8' },
   ];
   console.log(layout, 'layout');
 
@@ -38,10 +38,10 @@ export default function Grid() {
   return (
     <ReactGridLayout
       layout={layout}
-      margin={[12, 12]}
+      margin={[10, 10]}
       onLayoutChange={onLayoutChange}
       className='relative'
-      rowHeight={200}
+      style={{ height: 1285 }}
       {...props}
     >
       {/* <div>
