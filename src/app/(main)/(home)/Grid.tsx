@@ -14,14 +14,15 @@ export default function Grid() {
   };
 
   const layout: Layout[] = [
-    { x: 0, y: 0, w: 14, h: 10, i: '0', isResizable: false },
-    { x: 14, y: 1, w: 10, h: 10, i: '1', isResizable: false },
-    { x: 0, y: 2, w: 24, h: 10, i: '2', isResizable: false },
-    { x: 0, y: 3, w: 10, h: 10, i: '3', isResizable: false },
-    { x: 14, y: 4, w: 14, h: 10, i: '4', isResizable: false },
+    { x: 0, y: 0, w: 14, h: 11, i: '0', isResizable: false },
+    { x: 14, y: 1, w: 10, h: 11, i: '1', isResizable: false },
+    { x: 0, y: 2, w: 24, h: 20, i: '2', isResizable: false },
+    { x: 0, y: 3, w: 10, h: 11, i: '3', isResizable: false },
+    { x: 14, y: 4, w: 14, h: 11, i: '4', isResizable: false },
+
     { x: 0, y: 5, w: 12, h: 14, i: '5', isResizable: false },
-    { x: 12, y: 6, w: 12, h: 8, i: '6', isResizable: false },
-    { x: 0, y: 7, w: 12, h: 8, i: '7', isResizable: false },
+    { x: 12, y: 6, w: 12, h: 9, i: '6', isResizable: false },
+    { x: 0, y: 7, w: 12, h: 9, i: '7', isResizable: false },
     { x: 12, y: 8, w: 12, h: 14, i: '8', isResizable: false },
   ];
   console.log(layout, 'layout');

@@ -1,15 +1,12 @@
 .react-grid-item {
-  height: 200px;
-  background-color: #fff;
   background-size: 200%;
-  border-color: #e3e8f7;
   border-width: 1px;
   box-shadow: 0 8px 16px -4px #2c2d300c;
   transition: all 200ms ease;
   transition-property: left, top, transform;
   animation: gradient 5s ease infinite;
 
-  @apply rounded-3xl bg-white;
+  @apply rounded-3xl border-[#e3e8f7] bg-white dark:border-zinc-900/100 dark:bg-zinc-900/60;
 
   /* transition-property: transform; */
 

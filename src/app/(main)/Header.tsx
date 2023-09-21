@@ -27,8 +27,8 @@ export default function Header() {
     };
   }, []);
   const variants = {
-    hidden: { opacity: 0, y: '-100%', scale: 0.9 },
-    show: { opacity: 1, y: 0, scale: 1 },
+    [Animate.Hidden]: { opacity: 0, y: '-100%', scale: 0.9 },
+    [Animate.Show]: { opacity: 1, y: 0, scale: 1 },
   };
   return (
     <motion.div
