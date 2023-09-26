@@ -1,0 +1,197 @@
+---
+title: 'ohmyzsh那些好用的插件'
+description: 'ohmyzsh提供了很多好用的插件，除了内置的插件同样支持第三方插件，本文将介绍几个很好用的插件，包括内置插件和第三方'
+date: '2023-08-02'
+---
+
+import Image from 'next/image';
+
+全文在`macOS`操作系统下，macOS早在Catalina版本就将`zsh`作为默认`shell`，如果是使用的`bash`，通过`chsh -s /bin/zsh`将shell设置为`zsh`，`echo $SHELL`查看当前使用的哪种shell。
+
+### ohmyzsh
+
+> 作为`zsh`的配置管理框架，推荐`zsh >= 5.0.8`，通过`zsh --version`查看版本
+
+使用`ohmyzsh`来丰富你的`zsh`，不仅可以美化，更能提高开发效率。
+
+### 插件
+
+> 介绍`ohmyzsh`中几个好用的插件，插件丰富多样，除了内置的插件，还有第三方
+
+确保`ohmyzsh`已安装，终端中输入`vim ~/.zshrc`打开zsh配置文件，找到`plugins`配置项`plugins=()`，多个插件使用空格隔开。
+
+#### 内置插件
+
+1. git
+
+`plugins=(git)`
+
+作为使用频率最高的操作之一，该插件为git命令设置了别名，不再需要每次敲完整命令。每次都输入完整命令提交，搞得你得加班来完成本可以在上班期间就能完成的功能，使用`git plugin`多少能让你早点下班😂。
+
+常用的别名有：
+
+- `gcb` => `git checkout -b`
+- `gco` => `git checkout`
+- `gcm` => `git checkout 主分支(master, main...)`
+- `gcd` => `git checkout 开发分支(dev...)`
+  <Image
+    src='/images/git-checkout.gif'
+    width={500}
+    height={100}
+    className='h-auto w-auto'
+    alt='git-checkout'
+  />
+- `gb` => `git branch`
+- `gba` => `git branch -a`
+- `gbd` => `git branch -d`
+  <Image
+    src='/images/git-branch.gif'
+    width={500}
+    height={100}
+    className='h-auto w-auto'
+    alt='git-checkout'
+  />
+- `gaa` => `git add .`
+- `gcmsg` => `git commit -m`
+- `gp` => `git push`
+- `gpf!` => `git push -f`
+- `gpr` => `git pull --rebase`
+- `gup` => `git pull --rebase`
+- `glg` => `git log --stat`
+- `glgg` => `git log --graph`
+- `gst` => `git status`
+- `gsh` => `git show`
+- `grba` => `git rebase --abort`
+- `grbc` => `git rebase --continue`
+- `grh` => `git reset`
+- `grhh` => `git reset --hard`
+
+提供的别名非常多，大家可根据自己git习惯用上对应别名。
+
+2. node
+
+`plugins=(node)`
+
+该插件提供快速跳转`nodejs`文档，在命令行中输入`node-docs xxx(api)`，如`node-docs fs`快速跳转到`fs`api，对于正在使用nodejs开发突然忘记某个api需要查看文档，这个插件有效节省搜索文档时间。
+
+3. vscode
+
+`plugins=(vscode)`
+
+命令行输入`code`或`vsc`在vscode中打开当前路径下的文件。
+
+4. web-search
+
+`plugins=(web-search)`
+
+在默认浏览器中通过指定搜索服务进行搜索，搜索服务包括`google bing github...`，使用方式为命令行中输入`搜索服务 关键词`，如`google zsh`用谷歌快速搜索zsh。
+
+上述四个是内置插件，无需安装直接配置即可使用`plugins=(git node vscode web-search)`，下面介绍两个自定义插件。
+
+#### 第三方插件
+
+5. zsh-syntax-highlighting
+
+`plugins=(zsh-syntax-highlighting)`
+
+高亮`zsh`命令，用于凸显命令的同时，还可用检测当前语法是否正确，如果不正确会被标红
+
+使用前：
+
+<Image
+  src='/images/highlight.jpg'
+  width={500}
+  height={100}
+  className='h-auto w-auto'
+  alt='git-checkout'
+/>
+<Image
+  src='/images/highlight2.jpg'
+  width={500}
+  height={100}
+  className='h-auto w-auto'
+  alt='git-checkout'
+/>
+
+使用后：
+
+<Image
+  src='/images/highlight3.jpg'
+  width={500}
+  height={100}
+  className='h-auto w-auto'
+  alt='git-checkout'
+/>
+<Image
+  src='/images/highlight4.jpg'
+  width={500}
+  height={100}
+  className='h-auto w-auto'
+  alt='git-checkout'
+/>
+
+如何配置？
+
+首先克隆当前仓库`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git`，将整个文件移动到`~/.oh-my-zsh/custom/plugins`下，
+
+<Image
+  src='/images/zsh-custom-plugin.jpg'
+  width={500}
+  height={100}
+  className='h-auto w-auto'
+  alt='git-checkout'
+/>
+
+接着将`zsh-syntax-highlighting`添加到配置文件的`plugins`中。
+
+6. zsh-autosuggestions
+
+`plugins=(zsh-autosuggestions)`
+
+该插件会基于已输入过的命令给出提示，点击左方向键即可完成提示输入，其配置方式同`zsh-syntax-highlighting`，先克隆仓库到本地，移动文件到`~/.oh-my-zsh/custom/plugins`下，然后添加到`plugins`中
+
+### 总结
+
+综上介绍了`ohmyzsh`的六个插件，四个内置和两个自定义插件，内置插件直接配置到`plugins`即可，自定义插件需要先克隆仓库然后移动文件到指定目录下，最后`plugins`如下
+
+```zsh
+# .zshrc
+
+plugins=(git node vscode web-search zsh-syntax-highlighting zsh-autosuggestions)
+```
+
+`ohmyzsh`的插件系统非常丰富，上面介绍的六个插件仅仅是冰山一角，大家可以根据自己开发习惯和需求自行添加各类插件。值得注意的是配置的插件数量会影响`zsh`的初始化速度，过多的插件会导致初始化慢。
+
+### Github
+
+<a
+  href='https://github.com/zsh-users/zsh'
+  target='_blank'
+  rel='noopener noreferrer'
+>
+  zsh
+</a>
+
+<a
+  href='https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins'
+  target='_blank'
+  rel='noopener noreferrer'
+>
+  ohmyzsh plugins
+</a>
+
+<a
+  href='https://github.com/zsh-users/zsh-syntax-highlighting'
+  target='_blank'
+  rel='noopener noreferrer'
+>
+  zsh-syntax-highlighting
+</a>
+
+<a
+  href='https://github.com/zsh-users/zsh-autosuggestions'
+  target='_blank'
+  rel='noopener noreferrer'
+>
+  zsh-autosuggestions
+</a>
