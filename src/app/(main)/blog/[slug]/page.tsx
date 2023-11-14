@@ -1,9 +1,17 @@
+import { notFound } from 'next/navigation';
 import React from 'react';
 
+import { MDXContent } from '@/components/MdxContent';
+
+import { allBlogs } from 'contentlayer/generated';
+
 export default function BlogDetail({ params }: { params: { slug: string } }) {
-  return (
-    <article className='prose max-w-none pb-16 dark:prose-invert'>
-      {params.slug}
-    </article>
-  );
+  const blog = allBlogs.find(({ slug }) => slug === params.slug);
+  console.log(blog, 'blog');
+
+  if (!blog) {
+    notFound();
+  }
+
+  return <MDXContent code={blog.body.code} />;
 }

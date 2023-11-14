@@ -1,37 +1,35 @@
 import { compareDesc, format, parseISO } from 'date-fns';
 import Link from 'next/link';
 
-import { allPosts, Post } from 'contentlayer/generated';
+import { allBlogs, Blog } from 'contentlayer/generated';
 
-function PostCard(post: Post) {
+function PostCard(blog: Blog) {
   return (
     <div className='mb-8'>
       <h2 className='mb-1 text-xl'>
         <Link
-          href={post.url}
+          href={`/blog/${blog.slug}`}
           className='text-blue-700 hover:text-blue-900 dark:text-blue-400'
         >
-          {post.title}
+          {blog.title}
         </Link>
       </h2>
-      <time dateTime={post.date} className='mb-2 block text-xs text-gray-600'>
-        {format(parseISO(post.date), 'LLLL d, yyyy')}
+      <time dateTime={blog.date} className='mb-2 block text-xs text-gray-600'>
+        {format(parseISO(blog.date), 'LLLL d, yyyy')}
       </time>
-      <time dateTime={post.date} className='mb-2 block text-xs text-gray-600'>
-        {post.date}
+      <time dateTime={blog.date} className='mb-2 block text-xs text-gray-600'>
+        {blog.date}
       </time>
       {/* <div
         className='text-sm [&>*:last-child]:mb-0 [&>*]:mb-3'
-        dangerouslySetInnerHTML={{ __html: post.body.html }}
+        dangerouslySetInnerHTML={{ __html: blog.body.html }}
       /> */}
     </div>
   );
 }
 
 export default function Blog() {
-  console.log(allPosts, 'allPosts');
-
-  const posts = allPosts.sort((a, b) =>
+  const blogs = allBlogs.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 
@@ -40,10 +38,9 @@ export default function Blog() {
       <h1 className='mb-8 text-center text-2xl font-black'>
         Next.js + Contentlayer Example
       </h1>
-      {posts.map((post, idx) => (
+      {blogs.map((blog, idx) => (
         <div key={idx}>
-          <PostCard {...post} />
-          <div>{JSON.stringify(post)}</div>
+          <PostCard {...blog} />
         </div>
       ))}
     </div>

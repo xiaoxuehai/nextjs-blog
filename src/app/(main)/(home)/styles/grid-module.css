@@ -17,19 +17,17 @@
   /* &.cssTransforms {
     transition-property: transform;
   } */
-
-  &.react-draggable-dragging {
-    z-index: 3;
-    transition: none;
-    will-change: transform;
-  }
-
-  &.react-grid-placeholder {
-    @apply select-none rounded-none bg-blue-700 opacity-10 duration-100;
-    z-index: 2;
-  }
+}
+.react-grid-item .react-draggable-dragging {
+  z-index: 3;
+  transition: none;
+  will-change: transform;
 }
 
+.react-grid-item .react-grid-placeholder {
+  @apply select-none rounded-none bg-blue-700 opacity-10 duration-100;
+  z-index: 2;
+}
 @keyframes gradient {
   0% {
     background-position: 0 50%;
