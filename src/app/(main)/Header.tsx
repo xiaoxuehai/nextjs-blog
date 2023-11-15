@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { NavigationBar } from '@/app/(main)/NavigationBar';
@@ -38,9 +40,17 @@ export default function Header() {
       variants={variants}
     >
       <Container>
-        <div className='z-50 flex h-16 pt-6'>
-          <div className='flex-1'>Blog</div>
-          <div className='flex flex-1 justify-end px-4'>
+        <div className='z-50 flex py-6'>
+          <Link href='/' className='flex-1'>
+            <Image
+              width={40}
+              height={40}
+              className='rounded-full'
+              src='/avatar.jpg'
+              alt=''
+            ></Image>
+          </Link>
+          <div className='flex flex-1 justify-center px-4'>
             <NavigationBar />
           </div>
           <div className='pointer-events-auto flex justify-end gap-3 md:flex-1'>
