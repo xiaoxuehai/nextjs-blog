@@ -19,6 +19,7 @@
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.2",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@types/mdx": "^2.0.10",
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
@@ -31,7 +32,8 @@
     "react-dom": "18.2.0",
     "react-grid-layout": "^1.4.3",
     "react-icons": "^4.11.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.0",
