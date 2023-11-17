@@ -67,6 +67,11 @@
   perspective: 1000px;
 }
 
+/* .background_container::before{
+  content: "";
+  position: absolute;
+} */
+
 .background_container .background_lines {
   position: absolute;
   inset: -100% 0;
@@ -91,6 +96,7 @@
   mask-repeat: repeat;
   mask-position: 50% 0;
 }
+
 @keyframes background-go-up {
   0% {
     transform: translateY(0);

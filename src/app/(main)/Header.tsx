@@ -50,7 +50,7 @@ export default function Header() {
               alt=''
             ></Image>
           </Link>
-          <div className='flex flex-1 justify-center px-4'>
+          <div className='flex flex-1 justify-end px-4 md:justify-center'>
             <NavigationBar />
           </div>
           <div className='pointer-events-auto flex justify-end gap-3 md:flex-1'>

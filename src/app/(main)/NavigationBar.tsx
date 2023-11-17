@@ -7,7 +7,13 @@ import type { HTMLAttributes, MouseEvent, PropsWithChildren } from 'react';
 
 import { FaAngleDown } from 'react-icons/fa';
 
-import Button from '@/components/Button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/Dialog';
 import { NAVIGATION_ITEMS } from '@/config/app';
 import clsxm from '@/lib/clsxm';
 
@@ -40,6 +46,22 @@ function NavigationItem({
     </li>
   );
 }
+function MobileNavItem({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li>
+      <Link href={href} className='block py-3'>
+        {children}
+      </Link>
+    </li>
+  );
+}
+
 function Desktop({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -83,12 +105,37 @@ function Desktop({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
     </nav>
   );
 }
-function Mobile(props: HTMLAttributes<HTMLButtonElement>) {
+function Mobile({ className }: { className: string }) {
   return (
-    <Button className='w-20' {...props}>
-      前往
-      <FaAngleDown />
-    </Button>
+    <Dialog>
+      <DialogTrigger
+        className={clsxm(
+          'group flex w-20 items-center justify-between rounded-full bg-gradient-to-b from-zinc-50/50 to-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:from-zinc-900/50 dark:to-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20',
+          className,
+        )}
+      >
+        前往
+        <FaAngleDown />
+      </DialogTrigger>
+      <DialogContent
+        className='top-48 w-11/12 rounded-3xl border-none bg-gradient-to-b from-zinc-100/75 to-white p-8
+shadow-none ring-1 ring-zinc-900/5 dark:from-zinc-900/50 dark:to-zinc-900 dark:ring-zinc-800'
+      >
+        <DialogHeader>
+          <DialogTitle>站内导航</DialogTitle>
+        </DialogHeader>
+
+        <nav className='mt-6'>
+          <ul className='-my-2 divide-y divide-zinc-500/20 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
+            {NAVIGATION_ITEMS.map(({ href, text }) => (
+              <MobileNavItem key={href} href={href}>
+                {text}
+              </MobileNavItem>
+            ))}
+          </ul>
+        </nav>
+      </DialogContent>
+    </Dialog>
   );
 }
 export function NavigationBar() {
