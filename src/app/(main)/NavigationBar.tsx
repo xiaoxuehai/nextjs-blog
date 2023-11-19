@@ -9,6 +9,7 @@ import { FaAngleDown } from 'react-icons/fa';
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -117,19 +118,16 @@ function Mobile({ className }: { className: string }) {
         前往
         <FaAngleDown />
       </DialogTrigger>
-      <DialogContent
-        className='top-48 w-11/12 rounded-3xl border-none bg-gradient-to-b from-zinc-100/75 to-white p-8
-shadow-none ring-1 ring-zinc-900/5 dark:from-zinc-900/50 dark:to-zinc-900 dark:ring-zinc-800'
-      >
+      <DialogContent className='top-48 w-11/12 divide-zinc-500/20 rounded-3xl px-8 py-6 shadow-none'>
         <DialogHeader>
-          <DialogTitle>站内导航</DialogTitle>
+          <DialogTitle className='text-base'>站内导航</DialogTitle>
         </DialogHeader>
 
         <nav className='mt-6'>
-          <ul className='-my-2 divide-y divide-zinc-500/20 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
+          <ul className='-my-2 divide-y divide-zinc-500/20 text-base  dark:divide-zinc-100/5'>
             {NAVIGATION_ITEMS.map(({ href, text }) => (
               <MobileNavItem key={href} href={href}>
-                {text}
+                <DialogClose className='w-full text-left'>{text}</DialogClose>
               </MobileNavItem>
             ))}
           </ul>
@@ -138,6 +136,7 @@ shadow-none ring-1 ring-zinc-900/5 dark:from-zinc-900/50 dark:to-zinc-900 dark:r
     </Dialog>
   );
 }
+
 export function NavigationBar() {
   return (
     <>
