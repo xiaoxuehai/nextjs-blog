@@ -50,7 +50,7 @@ export default function Project() {
                     {item.title}
                   </a>
                   <a
-                    className='rounded-3xl bg-slate-100 px-3 py-1 text-sm dark:bg-slate-600 dark:text-white'
+                    className='rounded-3xl bg-accent px-3 py-1 text-sm'
                     href={item.source}
                     target='_blank'
                     rel='noreferrer'
