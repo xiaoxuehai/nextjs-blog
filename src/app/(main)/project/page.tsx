@@ -35,10 +35,10 @@ export default function Project() {
   ];
   return (
     <Container>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+      <div className='grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 md:grid-cols-3'>
         {projects.map((item, index) => (
           <FadeIn key={item.title + index} delay={index * 0.2}>
-            <Card className='p-4'>
+            <Card className='p-4 transition-all duration-200 hover:scale-105'>
               <div className='flex flex-col gap-3'>
                 <div className='flex items-center justify-between'>
                   <a
@@ -58,9 +58,28 @@ export default function Project() {
                     源码
                   </a>
                 </div>
-                <p className='m-0 h-16 overflow-hidden overflow-ellipsis text-sm opacity-70'>
+                <p className='line-clamp-ellipsis m-0 line-clamp-2 overflow-hidden overflow-ellipsis text-sm opacity-70'>
                   {item.description}
                 </p>
+
+                <div>
+                  <a
+                    className='mr-2 rounded-3xl bg-accent px-3 py-1 text-sm'
+                    href={item.source}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    标签1
+                  </a>
+                  <a
+                    className='mr-2 rounded-3xl bg-accent px-3 py-1 text-sm'
+                    href={item.source}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    标签2
+                  </a>
+                </div>
               </div>
             </Card>
           </FadeIn>

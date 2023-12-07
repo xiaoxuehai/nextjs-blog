@@ -64,6 +64,7 @@ body {
 
   body {
     @apply bg-background text-foreground;
+    overflow: visible;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;

@@ -22,7 +22,7 @@ import $styles from './styles/background.module.css';
 
 export default function Background() {
   return (
-    <div className='pointer-events-none absolute left-0 top-0 h-[1000px] w-full overflow-hidden'>
+    <div className='pointer-events-none absolute left-0 top-0 h-screen w-full overflow-hidden'>
       <div
         className='[--gradient-color-1=rgba(0,0,0,1)] [--gradient-color-2=rgba(0,0,0,0.8)] [--gradient-color-3=rgba(0,0,0,0)] dark:[--gradient-color-1=rgba(255,255,255,1)] dark:[--gradient-color-2=rgba(255,255,255,0.8)] dark:[--gradient-color-3=rgba(255,255,255,0)] absolute z-[-1] h-full w-full [--gradient-stop-1:60%] [--gradient-stop-2:85%] lg:[--gradient-stop-1:50%] lg:[--gradient-stop-2:90%]'
         style={{

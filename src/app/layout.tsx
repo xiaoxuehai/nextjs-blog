@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
+import BackToTop from '@/components/BackTop';
+
 import '@/styles/index.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -25,6 +27,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           disableTransitionOnChange
         >
           {children}
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

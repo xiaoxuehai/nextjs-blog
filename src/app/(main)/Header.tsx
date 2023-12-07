@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { NavigationBar } from '@/app/(main)/NavigationBar';
 import { ThemeSwitch } from '@/app/(main)/ThemeSwitch';
@@ -13,34 +13,28 @@ enum Animate {
   Hidden = 'hidden',
 }
 export default function Header() {
-  const preScrollY = useRef(0);
+  const prevScrollY = useRef(0);
   const [animate, setAnimate] = useState<Animate>(Animate.Show);
-  useEffect(() => {
-    const handleScroll = () => {
-      setAnimate(
-        window.scrollY < preScrollY.current ? Animate.Show : Animate.Hidden,
-      );
-      preScrollY.current = window.scrollY;
-    };
+  const { scrollY } = useScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  useMotionValueEvent(scrollY, 'change', latest => {
+    setAnimate(latest < prevScrollY.current ? Animate.Show : Animate.Hidden);
+    prevScrollY.current = latest;
+  });
+
   const variants = {
     [Animate.Hidden]: { opacity: 0, y: '-100%', scale: 0.9 },
     [Animate.Show]: { opacity: 1, y: 0, scale: 1 },
   };
   return (
     <motion.div
-      className='sticky top-0 z-50'
-      initial={variants.hidden}
+      className='sticky top-0 z-50 bg-background'
+      initial={variants[Animate.Hidden]}
       animate={animate}
       variants={variants}
     >
       <Container>
-        <div className='z-50 flex py-6'>
+        <div className='flex py-6'>
           <Link href='/' className='flex-1'>
             <Image
               width={40}
