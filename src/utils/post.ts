@@ -10,7 +10,7 @@ export type Frontmatter = {
   updatedOn?: string; // 最后更新日期，git commit 之前会自动更新此字段
   tags?: string[]; // 标签
   draft?: boolean; // 为 true 则不会展示该文章，默认为 false
-  [key: string]: any;
+  // [key: string]: any;
 };
 export type ContentType = 'blog' | 'library' | 'projects';
 
