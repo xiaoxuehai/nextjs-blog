@@ -15,10 +15,15 @@ export type Frontmatter = {
 export type ContentType = 'blog' | 'library' | 'projects';
 
 export async function getAllFilesFrontmatter(type: ContentType) {
-  const contents: string[] = await glob('contents/**/*.mdx');
+  const contents: string[] = await glob('src/contents/**/*.mdx');
+  console.log(contents, 'contents');
+
   return await Promise.all(
     contents.map(async content => {
-      const slug = content.replace(/^posts\/|\.mdx$/g, '');
+      // const filename = content.replace(/.*\\|\..*$/g, '');
+      // console.log(filename, 'filename');
+
+      const slug = content.replace(/\.\w+$/, '');
       const frontmatter = await getFileFrontmatter(type, slug);
       return {
         slug,
@@ -32,8 +37,12 @@ export async function getFileFrontmatter(
   type: ContentType,
   slug: string,
 ): Promise<Frontmatter> {
+  console.log(slug, 'slug');
+
+  console.log(path.join(process.cwd(), 'src', 'contents', type, `${slug}.mdx`));
+
   const source = await fs.readFile(
-    path.join(process.cwd(), 'src', 'contents', type, `${slug}.mdx`),
+    path.join(process.cwd(), 'contents', type, `${slug}.mdx`),
     'utf8',
   );
   const frontmatter = matter(source).data as Frontmatter;
