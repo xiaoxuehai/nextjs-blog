@@ -1,17 +1,38 @@
-import { notFound } from 'next/navigation';
-import React from 'react';
+import path from 'path';
 
-import { MDXContent } from '@/components/MdxContent';
+import { bundleMDX } from 'mdx-bundler';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
-import { allBlogs } from 'contentlayer/generated';
+import Container from '@/components/Container';
+import { Frontmatter } from '@/types/mdx';
 
-export default function BlogDetail({ params }: { params: { slug: string } }) {
-  const blog = allBlogs.find(({ slug }) => slug === params.slug);
-  console.log(blog, 'blog');
+import MDXContent from './MDXContent';
 
-  if (!blog) {
-    notFound();
-  }
+export default async function BlogDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const slug = decodeURIComponent(params.slug);
 
-  return <MDXContent code={blog.body.code} />;
+  //   if (!blog) {
+  //     notFound();
+  //   }
+  const { code } = await bundleMDX<Frontmatter>({
+    file: path.join(process.cwd(), `/src/contents/blog/${slug}.mdx`),
+    mdxOptions(options) {
+      return {
+        ...options,
+        remarkPlugins: [...(options.remarkPlugins ?? []), remarkGfm],
+        rehypePlugins: [...(options.rehypePlugins ?? []), rehypeSlug],
+      };
+    },
+  });
+
+  return (
+    <Container>
+      <MDXContent code={code} />
+    </Container>
+  );
 }
