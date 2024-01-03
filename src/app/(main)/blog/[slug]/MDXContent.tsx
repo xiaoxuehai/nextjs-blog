@@ -3,10 +3,18 @@
 import { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'mdx-bundler/client';
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
+
+import CodeBlock from '@/components/CodeBlock';
 
 const components = {
   img: Image,
+  pre: ({ children }: PropsWithChildren) => {
+    const { className, children: code } = (
+      children?.valueOf() as Record<string, unknown>
+    ).props as { className: string; children: string };
+    return <CodeBlock lang={className.replace('language-', '')} code={code} />;
+  },
 } as unknown as MDXComponents;
 
 export interface PostContentProps {

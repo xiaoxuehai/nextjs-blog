@@ -4,7 +4,8 @@ import { bundleMDX } from 'mdx-bundler';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
-import Container from '@/components/Container';
+import { Container } from '@/components/Container';
+import { Prose } from '@/components/Prose';
 import { Frontmatter } from '@/types/mdx';
 
 import MDXContent from './MDXContent';
@@ -32,7 +33,9 @@ export default async function BlogDetail({
 
   return (
     <Container>
-      <MDXContent code={code} />
+      <Prose>
+        <MDXContent code={code} />
+      </Prose>
     </Container>
   );
 }
