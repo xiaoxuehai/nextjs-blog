@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 
 import { NavigationBar } from '@/app/(main)/NavigationBar';
 import { ThemeSwitch } from '@/app/(main)/ThemeSwitch';
-import Container from '@/components/Container';
+import { Container } from '@/components/Container';
 enum Animate {
   Show = 'show',
   Hidden = 'hidden',
@@ -28,7 +28,7 @@ export default function Header() {
   };
   return (
     <motion.div
-      className='sticky top-0 z-50 bg-background'
+      className='sticky top-0 z-50'
       initial={variants[Animate.Hidden]}
       animate={animate}
       variants={variants}

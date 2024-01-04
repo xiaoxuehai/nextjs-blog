@@ -1,5 +1,5 @@
 import Background from '@/app/(main)/(home)/Background';
-import Container from '@/components/Container';
+import { Container } from '@/components/Container';
 
 import Grid from './Grid';
 export default function Page() {
