@@ -2,8 +2,6 @@
 # ide
 .vscode
 
-.contentlayer
-
 # dependencies
 /node_modules
 /.pnp

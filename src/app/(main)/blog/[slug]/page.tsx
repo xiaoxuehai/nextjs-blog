@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
+import { useRef } from 'react';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -31,9 +32,12 @@ export default async function BlogDetail({
     },
   });
 
+  // console.log(getHeadings(code));
+  const contentElRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <Container>
-      <Prose>
+      <Prose ref={contentElRef}>
         <MDXContent code={code} />
       </Prose>
     </Container>
