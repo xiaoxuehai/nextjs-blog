@@ -11,7 +11,7 @@ export type ContentProps = {
   code: string;
 };
 export function Content({ code }: ContentProps) {
-  const [headings, setHeadings] = useState<Headling[]>([]);
+  const [headings, setHeadings] = useState<Headling[] | null>(null);
   const contentElRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -21,15 +21,15 @@ export function Content({ code }: ContentProps) {
     }
   }, [code]);
   return (
-    <>
-      <aside className='w-[160px] shrink-0'>
-        <div className='sticky top-2 pt-20'>
-          <TableOfContents headings={headings} />
-        </div>
-      </aside>
+    <div className='flex justify-between'>
       <Prose ref={contentElRef}>
         <MDXContent code={code} />
       </Prose>
-    </>
+      <aside className='w-[160px] shrink-0'>
+        <div className='sticky top-0'>
+          {headings && <TableOfContents headings={headings} />}
+        </div>
+      </aside>
+    </div>
   );
 }
