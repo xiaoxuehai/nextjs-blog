@@ -25,8 +25,8 @@ export function Content({ code }: ContentProps) {
       <Prose ref={contentElRef}>
         <MDXContent code={code} />
       </Prose>
-      <aside className='w-[160px] shrink-0'>
-        <div className='sticky top-0'>
+      <aside className='w-[160px] shrink-0 pl-6'>
+        <div className='sticky top-24'>
           {headings && <TableOfContents headings={headings} />}
         </div>
       </aside>

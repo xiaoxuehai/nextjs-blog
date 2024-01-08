@@ -12,7 +12,6 @@ body {
 @layer base {
   :root {
     --sky-color: theme('colors.sky.600');
-
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -37,7 +36,6 @@ body {
 
   .dark {
     --sky-color: theme('colors.sky.400');
-
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
     --muted: 223 47% 11%;
@@ -66,9 +64,13 @@ body {
     @apply border-border;
   }
 
+  html,
   body {
     @apply bg-background text-foreground;
     overflow: visible;
+    text-rendering: optimizelegibility;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;

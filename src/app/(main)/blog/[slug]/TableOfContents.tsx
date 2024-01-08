@@ -55,7 +55,7 @@ export function TableOfContents({ headings }: { headings: Headling[] }) {
           key={item.id}
           whileHover={{
             scale: 1.05,
-            fontWeight: 'bold',
+            fontWeight: 700,
             transition: { duration: 0.2 },
           }}
           variants={itemVariants}
