@@ -23,7 +23,7 @@ export const getHeadings = (source: string) => {
 
       return {
         text: headingEl.textContent,
-        level: headingEl.tagName,
+        level: headingEl.tagName.toLocaleLowerCase(),
         id: headingEl.id,
       };
     });

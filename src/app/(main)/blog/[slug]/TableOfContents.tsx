@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
@@ -43,6 +43,12 @@ export function TableOfContents({ headings }: { headings: Headling[] }) {
     string | null
   >(null);
   console.log(setHighlightedHeadingId, 'setHighlightedHeadingId');
+  useEffect(() => {
+    const nodes = document.querySelectorAll('h3');
+    for (const node of Array.from(nodes)) {
+      console.log(node);
+    }
+  }, []);
   return (
     <motion.ul
       initial={Animate.Hidden}
@@ -61,8 +67,8 @@ export function TableOfContents({ headings }: { headings: Headling[] }) {
           variants={itemVariants}
           className={clsxm(
             'text-sm font-medium transition-colors duration-300',
-            item.level === 'H3' && 'ml-1',
-            item.level === 'H4' && 'ml-2',
+            item.level === 'h3' && 'ml-1',
+            item.level === 'h4' && 'ml-2',
             item.text === highlightedHeadingId
               ? 'font-bold text-zinc-900 dark:text-zinc-100'
               : 'hover:text-zinc-700 dark:hover:text-zinc-400',
