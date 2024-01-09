@@ -1,0 +1,150 @@
+.prismjs {
+  padding: 20px;
+  margin: 0;
+  font-size: 16px;
+  background: transparent;
+
+  @apply antialiased;
+}
+
+[data-blockid]:not([data-filename]) > .prismjs {
+  @apply rounded-t-3xl;
+}
+
+.token.tag,
+.token.class-name,
+.token.selector,
+.token.selector .class,
+.token.selector.class,
+.token.function {
+  @apply text-blue-700;
+}
+
+.token.attr-name,
+.token.keyword,
+.token.module,
+.token.rule,
+.token.pseudo-class,
+.token.important {
+  @apply text-orange-700;
+}
+
+.token.attr-value,
+.token.class,
+.token.string {
+  @apply text-sky-700;
+}
+
+.token.attr-value * {
+  @apply text-sky-700;
+}
+
+.token.property {
+  @apply text-sky-700;
+}
+
+.token.unit {
+  @apply text-teal-800;
+}
+
+.language-css .token.function {
+  @apply text-teal-800;
+}
+
+.dark {
+  .token.tag,
+  .token.class-name,
+  .token.selector,
+  .token.selector .class,
+  .token.selector.class,
+  .token.function {
+    @apply text-blue-300;
+  }
+
+  .token.attr-name,
+  .token.keyword,
+  .token.module,
+  .token.rule,
+  .token.pseudo-class,
+  .token.important {
+    @apply text-orange-300;
+  }
+
+  .token.attr-value,
+  .token.class,
+  .token.string {
+    @apply text-sky-300;
+  }
+
+  .token.attr-value * {
+    @apply text-sky-300;
+  }
+
+  .token.property {
+    @apply text-sky-300;
+  }
+
+  .token.unit {
+    @apply text-teal-200;
+  }
+
+  .language-css .token.function {
+    @apply text-teal-200;
+  }
+}
+
+.token.punctuation,
+.token.attr-equals {
+  @apply text-zinc-500;
+}
+
+.token.attr-value .attr-equals,
+.token.attr-value .attr-equals + .punctuation,
+.token.attr-value > .punctuation:last-child {
+  @apply text-zinc-500;
+}
+
+.language-shell .token:not(.comment),
+.token.atapply .token:not(.rule, .important, .punctuation) {
+  color: inherit;
+}
+
+.token.comment,
+.token.operator,
+.token.combinator {
+  @apply text-zinc-400;
+}
+
+.token.unchanged {
+  @apply block;
+}
+
+.token.deleted,
+.token.inserted {
+  @apply relative -mx-9 block border-l-4 pl-8 pr-5 before:absolute before:left-4 before:top-0;
+}
+
+.token.inserted {
+  @apply border-teal-400 bg-teal-400/[0.15] before:text-teal-400 before:content-['+'];
+}
+
+.token.deleted {
+  @apply border-rose-400 bg-rose-500/[0.15] before:text-rose-400 before:content-['-'];
+}
+
+pre[class^='language-diff-'] {
+  @apply flex px-9;
+}
+
+pre[class^='language-diff-'] > code {
+  @apply min-w-full flex-none;
+}
+
+/* targets the `&shy;` in a code example */
+span.code-highlight.bg-code-highlight:has(> span[title*='\AD']) {
+  @apply mx-[1px] bg-pink-500/10 text-pink-400;
+}
+
+.comment.linenumber {
+  @apply opacity-40;
+}

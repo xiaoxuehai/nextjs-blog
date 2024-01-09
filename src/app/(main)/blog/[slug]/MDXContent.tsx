@@ -1,10 +1,11 @@
 'use client';
+// import { MDXComponents } from '@mdx/types';
 import { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'mdx-bundler/client';
-import Image from 'next/image';
-import { PropsWithChildren, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import CodeBlock from '@/components/CodeBlock';
+import { CodeBlock } from './CodeBlock';
+
 export interface PostContentProps {
   code: string;
 }
@@ -31,15 +32,21 @@ export const getHeadings = (source: string) => {
 
   return null;
 };
-const components = {
-  img: Image,
-  pre: ({ children }: PropsWithChildren) => {
+const components: MDXComponents = {
+  //   img: Image,
+  pre: ({ children }) => {
     const { className, children: code } = (
       children?.valueOf() as Record<string, unknown>
     ).props as { className: string; children: string };
-    return <CodeBlock lang={className.replace('language-', '')} code={code} />;
+    return (
+      <CodeBlock
+        filename='config.js'
+        language={className.replace('language-', '')}
+        code={code}
+      />
+    );
   },
-} as unknown as MDXComponents;
+};
 
 const MDXContent: React.FC<PostContentProps> = ({ code }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);

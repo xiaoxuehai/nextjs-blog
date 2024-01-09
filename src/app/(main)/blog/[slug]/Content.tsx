@@ -1,11 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-import { Prose } from '@/components/Prose';
-
 import { getHeadings } from './MDXContent';
 
 import MDXContent, { Headling } from './MDXContent';
+import { Prose } from './Prose';
 import { TableOfContents } from './TableOfContents';
 export type ContentProps = {
   code: string;
